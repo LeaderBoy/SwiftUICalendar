@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftUIViewPager",
+        "repositoryURL": "https://github.com/LeaderBoy/SwiftUIViewPager.git",
+        "state": {
+          "branch": null,
+          "revision": "62d18220414242e1b257deede1225835eb43cced",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
