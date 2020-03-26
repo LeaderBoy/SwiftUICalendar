@@ -35,6 +35,8 @@ public struct CalendarToolBar: View {
     
     var foreColor : Color = .blue
     
+    public init() {}
+    
     public var body: some View {
         HStack {
             HStack(spacing:30) {
@@ -49,7 +51,7 @@ public struct CalendarToolBar: View {
             Spacer()
             HStack(spacing:5) {
                 Button(action: {
-                    self.manager.date = self.CalendarManager.date.addMonth(by:-1)
+                    self.manager.date = self.manager.date.addMonth(by:-1)
                     self.manager.pageManager.currentPage -= 1
                 }) {
                     Image(systemName: "chevron.left")
@@ -57,7 +59,7 @@ public struct CalendarToolBar: View {
                 }
                 .frame(width: 50, height: 40)
                 Button(action: {
-                    self.manager.date = self.CalendarManager.date.addMonth(by:1)
+                    self.manager.date = self.manager.date.addMonth(by:1)
                     self.manager.pageManager.currentPage += 1
                 }) {
                     Image(systemName: "chevron.right")

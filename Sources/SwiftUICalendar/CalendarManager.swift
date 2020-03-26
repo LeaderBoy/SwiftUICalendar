@@ -36,7 +36,7 @@ public class CalendarManager : ObservableObject {
 
     /// for nest ObservableObject not work
     ///  https://stackoverflow.com/questions/58406287/how-to-tell-swiftui-views-to-bind-to-nested-observableobjects
-    init() {
+    public init() {
         anyCancellable = pageManager.objectWillChange.sink(receiveValue: { value in
             self.objectWillChange.send()
         })

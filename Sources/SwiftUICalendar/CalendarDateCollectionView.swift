@@ -16,6 +16,8 @@ public struct CalendarDateCollectionView: View {
     @State private var state : CalendarCell.CellState = .normal
     @State private var size : CGSize = .zero
     
+    public init() {}
+    
     public var body: some View {
         ViewPager(pageManager: self.manager.pageManager, views:[self.page()])
         .frame(height: 44 * 6)
@@ -29,7 +31,12 @@ public struct CalendarDateCollectionView: View {
                         ForEach(rows,id: \.self) { column in
                             HStack {
                                 Spacer(minLength: 0)
+                                
                                 CalendarCell(holderDate: column)
+                                    /// Don't know why
+                                    /// CalendarView in ScrollView will crash some times because of CalendarCell manager is nil
+                                    /// so to prevent the crash
+                                    .environmentObject(self.manager)
                                 Spacer(minLength: 0)
                             }
                         }
@@ -90,6 +97,10 @@ public struct CalendarDateCollectionView: View {
 
 public struct HolderDate : Hashable {
     let date : Date?
+    
+    public init(date : Date?) {
+        self.date = date
+    }
 }
 
 @available(iOS 13.0,*)

@@ -10,8 +10,7 @@ import SwiftUI
 
 @available(iOS 13.0,*)
 public struct CalendarView: View {
-    
-    @EnvironmentObject var manager : CalendarManager
+    public init() {}
     
     public var body: some View {
         VStack {

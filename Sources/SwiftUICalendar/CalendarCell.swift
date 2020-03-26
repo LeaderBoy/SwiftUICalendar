@@ -11,7 +11,7 @@ import SwiftUI
 @available(iOS 13.0,*)
 public struct CalendarCell: View {
     @EnvironmentObject var manager : CalendarManager
-    
+
     var holderDate : HolderDate
     
     @State var state : CellState = .normal
@@ -53,6 +53,10 @@ public struct CalendarCell: View {
             }
         }
     }
+    
+    public init(holderDate : HolderDate) {
+        self.holderDate = holderDate
+    }
 
     public var body: some View {
         Button(action: {
@@ -68,7 +72,7 @@ public struct CalendarCell: View {
         .onAppear {
             self.stateChanged(animated: false)
         }
-        .onReceive(obj.didChangeSelectedDate) { value in
+        .onReceive(manager.didChangeSelectedDate) { value in
             self.stateChanged()
         }
     }
@@ -108,9 +112,9 @@ public struct CalendarCell: View {
                     } else {
                         self.state = .normal
                     }
-                    self.obj.selectedDate = Date()
+                    self.manager.selectedDate = Date()
                 } else {
-                    self.obj.selectedDate = date
+                    self.manager.selectedDate = date
                 }
             }
         }
@@ -140,7 +144,7 @@ public struct CalendarCell: View {
     
     func isSelected() -> Bool {
         if let date = holderDate.date {
-            let selected = obj.selectedDate
+            let selected = manager.selectedDate
             return date.isSameDay(date: selected)
         }
         return false
@@ -154,6 +158,7 @@ struct CalendarCell_Previews: PreviewProvider {
         Group {
             CalendarCell(holderDate: HolderDate(date:Date()))
             .previewDisplayName("Normal")
+            .environmentObject(CalendarManager())
 
 //            CalendarCell(holderDate: HolderDate(date:Date()), state: .constant(.current))
 //            .previewDisplayName("Current")

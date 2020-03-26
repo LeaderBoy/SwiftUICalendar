@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import SwiftUICalendar
 
 @available(iOS 13.0,*)
 public struct PendantView: View {
@@ -22,6 +21,8 @@ public struct PendantView: View {
     }
 
     var color : Color = .green
+    
+    public init() {}
     
     public var body: some View {
         ZStack(alignment: .top) {

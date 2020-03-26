@@ -14,7 +14,9 @@ public struct CalendarWeekBar: View {
     @EnvironmentObject var manager : CalendarManager
     
     var color : Color = Color.gray
-        
+    
+    public init() {}
+    
     public var body: some View {
         HStack {
             ForEach(self.weeks(),id:\.self) { week in
